@@ -20,7 +20,7 @@ kmStand decimal,
 Leistung decimal,
 Erstzulasung date,
 Kennzeichen varchar(64),
-Baujahr year,
+Baujahr date,
 MarkenID int
 );
 
