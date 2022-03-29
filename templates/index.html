@@ -4,81 +4,112 @@
 
 <h1>Page-Reloads: {(reload_count})</h1>
 
-<form method="post">
-    <!-- title -->
-    <!-- description -->
-    <!-- dueDate -->
-    <!-- isDone -->
+<div class = "toast-container", >
 
-    {{form.csrf_token}}
 
-    <div class="row mb-3">
-        <label for="title" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-            {{form.title()}}
-        </div>
+    {%with messages = get_flashed_messages()%}
+    {% if messages %}
+        {% for messages in messages %}
+        <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                {{message}}
+             </div>
+              <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+    
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
     </div>
-
-    <div class="row mb-3">
-        <label for="description" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-            {{form.description()}}
+    
+    <form method="post">
+        <!-- title -->
+        <!-- description -->
+        <!-- dueDate -->
+        <!-- isDone -->
+    
+        {{form.csrf_token}}
+    
+        <div class="row mb-3">
+            <label for="JaehrlicherUmsatz" class="col-sm-2 col-form-label">Jaehrlicher Umsatz</label>
+            <div class="col-sm-10">
+                {{form.JaehrlicherUmsatz()}}
+            </div>
         </div>
-    </div>
-
-    <div class="row mb-3">
-        <label for="dueDate" class="col-sm-2 col-form-label">Due Date</label>
-        <div class="col-sm-10">
-            {{form.dueDate()}}
+    
+        <div class="row mb-3">
+            <label for="Gruendungsdatum" class="col-sm-2 col-form-label">Gruendungsdatum</label>
+            <div class="col-sm-10">
+                {{form.Gruendungsdatum()}}
+            </div>
         </div>
-    </div>
-
-    <div class="row mb-3">
-        <label for="isDone" class="col-sm-2 col-form-label">Is Done</label>
-        <div class="col-sm-10">
-            {{form.isDone()}}
+    
+        <div class="row mb-3">
+            <label for="MarkenName" class="col-sm-2 col-form-label">Marken Name</label>
+            <div class="col-sm-10">
+                {{form.MarkenName()}}
+            </div>
         </div>
-    </div>
+    
+        <div class="row mb-3">
+            <label for="VerkaufszahlenProJahr" class="col-sm-2 col-form-label">Verkaufszahlen pro Jahr</label>
+            <div class="col-sm-10">
+                {{form.VerkaufszahlenProJahr()}}
+            </div>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <td scope="col">Item Id</td>
-            <td scope="col">Title</td>
-            <td scope="col">Description</td>
-            <td scope="col">Due Date</td>
-            <td scope="col">Is Done</td>
-            <td scope="col">Actions</td>
-        </tr>
-    </thead>
-    <tbody>
-        {%for item in items:%}
+        <div class="row mb-3">
+            <label for="Herststellland" class="col-sm-2 col-form-label">Herstellland</label>
+            <div class="col-sm-10">
+                {{form.Herststellland()}}
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    
+    <table class="table">
+        <thead>
             <tr>
-                <td scope="row">{{item.itemId}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.description}}</td>
-                <td>{{item.dueDate}}</td>
-                <td>
-                    {%if item.isDone == 0%}
-                    <input type = "checkbox" disabled>
-                    {%else%}
-                    <input type = "checkbox" checked disabled>
-                    {%endif%}
-
-                <td>
-                    <form method="post" action = "/items/delete">
-                        {{form.csrf_token}}
-                        <input type = "hidden" id = "itemId" name = "itemId" value = "{{item.itemId}}">
-                        <button class="btn btn-danger" onclick = "deleteItem(this); return false;">❌</button>
-                    </form>
-                    <button class = "btn btn-info" onclick="window.location.href='/editForm?itemid={{item.itemId}}'">✏️</button>
-                    </td>
-                </tr>
-            {%endfor%}
-        </tbody>
-    </table>
-
-    {%endblock%}
+                <td scope="col">MarkenID</td>
+                <td scope="col">JaehrlicherUmsatz</td>
+                <td scope="col">Gruendungsdatum</td>
+                <td scope="col">MarkenName</td>
+                <td scope="col">VerkaufszahlenProJahr</td>
+                <td scope="col">Herststellland</td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for item in items:%}
+                <tr>
+                    <td scope="row">{{item.MarkenID}}</td>
+                    <td>{{item.JaehrlicherUmsatz}}</td>
+                    <td>{{item.Gruendungsdatum}}</td>
+                    <td>{{item.MarkenName}}</td>
+                    <td>{{item.VerkaufszahlenProJahr}}</td>
+                    <td>{{item.Herststellland}}</td>
+                    <td>
+                        {%if item.isDone == 0%}
+                        <input type = "checkbox" disabled>
+                        {%else%}
+                        <input type = "checkbox" checked disabled>
+                        {%endif%}
+    
+                    <!--<td>
+                        <form method="post" action = "/items/delete">
+                            {{form.csrf_token}}
+                            <input type = "hidden" id = "itemId" name = "itemId" value = "{{item.itemId}}">
+                            <button class="btn btn-danger" onclick = "deleteItem(this);return false;">❌</button>
+                        </form>
+                        <button class = "btn btn-info" onclick="window.location.href='/editForm?itemid={{item.itemId}}'">✏️</button>
+                        </td>
+                    </tr>
+                    -->
+                {%endfor%}
+            </tbody>
+        </table>
+    
+        {%endblock%}

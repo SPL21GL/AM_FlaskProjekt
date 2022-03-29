@@ -1,5 +1,6 @@
-from flask import Flask, render_template, session, redirect
-from model import Automarke, db
+from flask import Flask, redirect, session
+from flask.templating import render_template
+from models.models import db, Automarke
 from addAutoForm import AddAutoForm
 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ db.init_app(app)
 
 @app.route("/", methods = ["get", "post"])
 def index():
+
     reload_count = session.get("number_of_reloads", 1)
 
     reload_count += 1
@@ -22,23 +24,24 @@ def index():
     
     if addAutoFormObject.validate_on_submit():
         #post kam zurück und ist valide
-        print(addAutoFormObject.FirstName.data)
-        print(addAutoFormObject.LastName.data)
-        print(addAutoFormObject.CarName.data)
-        print(addAutoFormObject.description.data)
-        print(addAutoFormObject.dueDate.data)
-        print(addAutoFormObject.isDone.data)
+       # print(addAutoFormObject.JaehrlicherUmsatz.data)
+        #print(addAutoFormObject.Gruendungsdatum.data)
+        #print(addAutoFormObject.MarkenName.data)
+        #print(addAutoFormObject.VerkaufszahlenProJahr.data)
+        #print(addAutoFormObject.Herststellland.data)
+
+
+
         #hier in DB Speichern
         
-        newItem = Automarke()
-        newItem.FirstName = addAutoFormObject.FirstName.data
-        newItem.LastName = addAutoFormObject.LastName.data
-        newItem.CarName = addAutoFormObject.CarName.data
-        newItem.description = addAutoFormObject.description.data
-        newItem.dueDate = addAutoFormObject.dueDate.data
-        newItem.isDone = addAutoFormObject.isDone.data
+        #newItem = Automarke()
+        #newItem.JaehrlicherUmsatz = addAutoFormObject.JaehrlicherUmsatz.data
+        #newItem.Gruendungsdatum = addAutoFormObject.Gruendungsdatum.data
+        #newItem.MarkenName = addAutoFormObject.CarMarkenNameName.data
+        #newItem.VerkaufszahlenProJahr = addAutoFormObject.VerkaufszahlenProJahr.data
+        #newItem.Herststellland = addAutoFormObject.Herststellland.data
 
-        db.session.add(newItem)
+        #db.session.add(newItem)
         db.session.commit()
 
         return redirect("/")
@@ -53,4 +56,4 @@ def index():
         reload_count = reload_count)
     
 
-app.run()
+app.run(debug=True)
