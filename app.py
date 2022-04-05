@@ -2,6 +2,7 @@ from flask import Flask, redirect, session
 from flask.templating import render_template
 from models.models import db, Automarke
 from addAutoForm import AddAutoForm
+from Controllers.index import index_blueprint
 
 app = Flask(__name__)
 app.secret_key ="VerySecretSecretKeey"
@@ -9,6 +10,8 @@ app.secret_key ="VerySecretSecretKeey"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@localhost/autoapp"
 db.init_app(app)
+
+app.register_blueprint(index_blueprint)
 
 @app.route("/", methods = ["get", "post"])
 def index():
@@ -24,24 +27,24 @@ def index():
     
     if addAutoFormObject.validate_on_submit():
         #post kam zurück und ist valide
-       # print(addAutoFormObject.JaehrlicherUmsatz.data)
-        #print(addAutoFormObject.Gruendungsdatum.data)
-        #print(addAutoFormObject.MarkenName.data)
-        #print(addAutoFormObject.VerkaufszahlenProJahr.data)
-        #print(addAutoFormObject.Herststellland.data)
+        print(addAutoFormObject.JaehrlicherUmsatz.data)
+        print(addAutoFormObject.Gruendungsdatum.data)
+        print(addAutoFormObject.MarkenName.data)
+        print(addAutoFormObject.VerkaufszahlenProJahr.data)
+        print(addAutoFormObject.Herststellland.data)
 
 
 
         #hier in DB Speichern
         
-        #newItem = Automarke()
-        #newItem.JaehrlicherUmsatz = addAutoFormObject.JaehrlicherUmsatz.data
-        #newItem.Gruendungsdatum = addAutoFormObject.Gruendungsdatum.data
-        #newItem.MarkenName = addAutoFormObject.CarMarkenNameName.data
-        #newItem.VerkaufszahlenProJahr = addAutoFormObject.VerkaufszahlenProJahr.data
-        #newItem.Herststellland = addAutoFormObject.Herststellland.data
+        newItem = Automarke()
+        newItem.JaehrlicherUmsatz = addAutoFormObject.JaehrlicherUmsatz.data
+        newItem.Gruendungsdatum = addAutoFormObject.Gruendungsdatum.data
+        newItem.MarkenName = addAutoFormObject.CarMarkenNameName.data
+        newItem.VerkaufszahlenProJahr = addAutoFormObject.VerkaufszahlenProJahr.data
+        newItem.Herststellland = addAutoFormObject.Herststellland.data
 
-        #db.session.add(newItem)
+        db.session.add(newItem)
         db.session.commit()
 
         return redirect("/")
