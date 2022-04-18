@@ -14,11 +14,9 @@
     }
   </style>
 </head>
-
 <form>
 
 <body>
-
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -46,16 +44,51 @@
       </div>
     </div>
   </nav>
-  
 
-  <div id = "text">
-    <p>asjfashdf ahsdfkjhasdkjfhalskjdhf asdhfkjasdhfkjashdfkasdjf sad hfaksjdhfkjasdfhk asdfhsadkfjhaskdjfhkasldfh sadhfaksdfh
-      asjdfhkjashdfkjashdfkahsdfkjashdfkjashdfkahsdfkjahf ashdfkjahsdfkjhasdkf sdjfhaskjdfhask fhsdfkjhdfkjsdf ashdfkjhasdfkjhasdfk 
-      akjshdfkjashdfkjhd ashdjkfhaslkdjfhkajsdf asdhfkjashdfkjashdf sadhfjkashdfjkashd asdhfkjashdfkjfdk dhsfkjsdkfjhsdf
-      MACHE EINEN UNTERSCHIED BITTEEEEEEEEE
-    </p>
-  </div>
 
+<div class="row mb-3">
+    <label for="Farbe" class="col-sm-2 col-form-label">Farbe</label>
+    <div class="col-sm-10">
+      {{form3.Farbe()}}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="kmStand" class="col-sm-2 col-form-label">km Stand</label>
+    <div class="col-sm-10">
+      {{form3.kmStand()}}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="Leistung" class="col-sm-2 col-form-label">Leistung</label>
+    <div class="col-sm-10">
+      {{form3.Leistung()}}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="Erstzulasung" class="col-sm-2 col-form-label">Erstzulasung</label>
+    <div class="col-sm-10">
+      {{form3.Erstzulasung()}}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="Kennzeichen" class="col-sm-2 col-form-label">Kennzeichen</label>
+    <div class="col-sm-10">
+      {{form3.Kennzeichen()}}
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="Baujahr" class="col-sm-2 col-form-label">Baujahr</label>
+    <div class="col-sm-10">
+      {{form3.Baujahr()}}
+    </div>
+</div>   
+
+  {%block body%} {%endblock%}
 </body>
 </form>
 
