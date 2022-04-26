@@ -15,7 +15,10 @@
   </style>
 </head>
 
+<form>
+
 <body>
+
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -43,47 +46,37 @@
       </div>
     </div>
   </nav>
-
+  
+  
+  
   <form method="post">
-    {{ form2.csrf_token() }}
-    <div class="row mb-3">
-        <label for="Vorname" class="col-sm-2 col-form-label">Vorname</label>
-        <div class="col-sm-10">
-            {{form2.Vorname()}}
-        </div>
-    </div>
+    {{ form.csrf_token() }}
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Vorname</label>
+      {{form.Vorname(class_="form-control")}}
+  </div>
     
-    <div class="row mb-3">
-        <label for="Nachname" class="col-sm-2 col-form-label">Nachname</label>
-        <div class="col-sm-10">
-          {{form2.Nachname()}}
-        </div>
-    </div>
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Nachname</label>
+      {{form.Nachname(class_="form-control")}}
+  </div>
     
-    <div class="row mb-3">
-        <label for="Geburtstag" class="col-sm-2 col-form-label">Geburtstag</label>
-        <div class="col-sm-10">
-          {{form2.Geburtstag()}}
-        </div>
-    </div>
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Geburtstag</label>
+      {{form.Geburtstag(class_="form-control")}}
+  </div>
     
-    <div class="row mb-3">
-        <label for="Wohnohrt" class="col-sm-2 col-form-label">Wohnohrt</label>
-        <div class="col-sm-10">
-          {{form2.Wohnohrt()}}
-        </div>
-    </div>
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Wohnohrt</label>
+      {{form.Wohnohrt(class_="form-control")}}
+  </div>
     
-    <div class="row mb-3">
-        <label for="Fuehrerscheinklasse" class="col-sm-2 col-form-label">Führerscheinklasse</label>
-        <div class="col-sm-10">
-          {{form2.Fuehrerscheinklasse()}}
-        </div>
-    </div>
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Fuehrerscheinklasse</label>
+      {{form.Fuehrerscheinklasse(class_="form-control")}}
+  </div>
 
     <button type="submit" class="btn btn-primary">Speichern</button>
-
-  {%block body%} {%endblock%}
 </body>
 </form>
 
@@ -99,17 +92,20 @@
       </tr>
   </thead>
   <tbody>
-      {%for Kunden in Kundenn:%}
-          <tr>
-              <td scope="row">{{AddKundenFormObject.KundenID}}</td>
-              <td>{{AddKundenFormObject.Vorname}}</td>
-              <td>{{AddKundenFormObject.Nachname}}</td>
-              <td>{{AddKundenFormObject.Geburtstag}}</td>
-              <td>{{AddKundenFormObject.Wohnohrt}}</td>
-              <td>{{AddKundenFormObject.Führerscheinklasse}}</td>
-          </tr>
+      {%for kunde in kunden: %}
+        <div class="container">
+          <form method="get">
+          <td scope="row">{{kunde.KundenID}}</td>
+              <td>{{kunde.Vorname}}</td>
+              <td>{{kunde.Nachname}}</td>
+              <td>{{kunde.Geburtstag}}</td>
+              <td>{{kunde.Wohnohrt}}</td>
+              <td>{{kunde.Fuehrerscheinklasse}}</td>
+        </div>
+        </td>
+        </form>
       {%endfor%}
+          
   </tbody>
 </table>
-
 </html>

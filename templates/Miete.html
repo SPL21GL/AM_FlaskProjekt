@@ -46,49 +46,43 @@
   </nav>
 
 
-<div class="row mb-3">
-    <label for="Farbe" class="col-sm-2 col-form-label">Farbe</label>
-    <div class="col-sm-10">
-      {{form3.Farbe()}}
-    </div>
+  <form method="post">
+    {{ form.csrf_token() }}
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Farbe</label>
+      {{form.Farbe(class_="form-control")}}
+  </div>
+
+  <div class="mb-3">
+    <label for="productScale" class="form-label">km Stand</label>
+    {{form.kmStand(class_="form-control")}}
 </div>
 
-<div class="row mb-3">
-    <label for="kmStand" class="col-sm-2 col-form-label">km Stand</label>
-    <div class="col-sm-10">
-      {{form3.kmStand()}}
-    </div>
+<div class="mb-3">
+  <label for="productScale" class="form-label">Leistung</label>
+  {{form.Leistung(class_="form-control")}}
 </div>
 
-<div class="row mb-3">
-    <label for="Leistung" class="col-sm-2 col-form-label">Leistung</label>
-    <div class="col-sm-10">
-      {{form3.Leistung()}}
-    </div>
+<div class="mb-3">
+  <label for="productScale" class="form-label">Erstzulasung</label>
+  {{form.Erstzulasung(class_="form-control")}}
 </div>
 
-<div class="row mb-3">
-    <label for="Erstzulasung" class="col-sm-2 col-form-label">Erstzulasung</label>
-    <div class="col-sm-10">
-      {{form3.Erstzulasung()}}
-    </div>
+<div class="mb-3">
+  <label for="productScale" class="form-label">Erstzulasung</label>
+  {{form.Erstzulasung(class_="form-control")}}
 </div>
 
-<div class="row mb-3">
-    <label for="Kennzeichen" class="col-sm-2 col-form-label">Kennzeichen</label>
-    <div class="col-sm-10">
-      {{form3.Kennzeichen()}}
-    </div>
-</div>
+<div class="mb-3">
+  <label for="productScale" class="form-label">Kennzeichen</label>
+  {{form.Kennzeichen(class_="form-control")}}
+</div>  
 
-<div class="row mb-3">
-    <label for="Baujahr" class="col-sm-2 col-form-label">Baujahr</label>
-    <div class="col-sm-10">
-      {{form3.Baujahr()}}
-    </div>
-</div>   
+<div class="mb-3">
+  <label for="productScale" class="form-label">Baujahr</label>
+  {{form.Baujahr(class_="form-control")}}
+</div>  
 
-  {%block body%} {%endblock%}
 </body>
 </form>
 

@@ -46,43 +46,59 @@
         </div>
       </nav>
 
-<div class="row mb-3">
-    <label for="JaehrlicherUmsatz" class="col-sm-2 col-form-label">Jährlicher Umsatz</label>
-    <div class="col-sm-10">
-      {{form1.JaehrlicherUmsatz()}}
+    <form method="post">
+    {{ form.csrf_token() }}
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Jährlicher Umsatz</label>
+        {{form.JaehrlicherUmsatz(class_="form-control")}}
     </div>
+  
+    <div class="mb-3">
+      <label for="productScale" class="form-label">Marken Name</label>
+      {{form.MarkenName(class_="form-control")}}
+  </div>
+  
+  <div class="mb-3">
+    <label for="productScale" class="form-label">Verkaufszahlen pro Jahr</label>
+    {{form.VerkaufszahlenProJahr(class_="form-control")}}
 </div>
   
-<div class="row mb-3">
-    <label for="Gruendungsdatum" class="col-sm-2 col-form-label">Gründungsdatum</label>
-    <div class="col-sm-10">
-      {{form1.Gruendungsdatum()}}
-    </div>
-</div>
-  
-<div class="row mb-3">
-    <label for="MarkenName" class="col-sm-2 col-form-label">Marken Name</label>
-    <div class="col-sm-10">
-      {{form1.MarkenName()}}
-    </div>
-</div>
-  
-<div class="row mb-3">
-    <label for="VerkaufszahlenProJahr" class="col-sm-2 col-form-label">Verkaufszahlen pro Jahr</label>
-    <div class="col-sm-10">
-      {{form1.VerkaufszahlenProJahr()}}
-    </div>
+<div class="mb-3">
+  <label for="productScale" class="form-label">Herststellland</label>
+  {{form.Herststellland(class_="form-control")}}
 </div>
 
-<div class="row mb-3">
-    <label for="Herststellland" class="col-sm-2 col-form-label">Herstellland</label>
-    <div class="col-sm-10">
-      {{form1.Herststellland()}}
-    </div>
-</div>
+<button type="submit" class="btn btn-primary">Speichern</button>
 
-  {%block body%} {%endblock%}
 </body>
 </form>
+
+<table class="table">
+  <thead class="table-dark">
+      <tr>
+          <td scope="col">Marken ID</td>
+          <td scope="col">Jährlicher Umsatz</td>
+          <td scope="col">Marken Name</td>
+          <td scope="col">Verkaufszahlen pro Jahr</td>
+          <td scope="col">Herststellland</td>
+      </tr>
+  </thead>
+  <tbody>
+      {%for auto in autos: %}
+        <div class="container">
+          <form method="get">
+          <td scope="row">{{auto.MarkenID}}</td>
+              <td>{{auto.JaehrlicherUmsatz}}</td>
+              <td>{{auto.Gruendungsdatum}}</td>
+              <td>{{auto.MarkenName}}</td>
+              <td>{{auto.VerkaufszahlenProJahr}}</td>
+              <td>{{auto.Herststellland}}</td>
+        </div>
+        </td>
+        </form>
+      {%endfor%}
+          
+  </tbody>
+</table>
 
 </html>
