@@ -76,14 +76,14 @@
       {{form.Fuehrerscheinklasse(class_="form-control")}}
   </div>
 
-    <button type="submit" class="btn btn-primary">Speichern</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 </body>
 </form>
 
 <table class="table">
   <thead class="table-dark">
       <tr>
-          <td scope="col">Kunden Id</td>
+          <td scope="col">#</td>
           <td scope="col">Vorname</td>
           <td scope="col">Nachname</td>
           <td scope="col">Geburtstag</td>
@@ -94,7 +94,8 @@
   <tbody>
       {%for kunde in kunden: %}
         <div class="container">
-          <form method="get">
+          <form method="post">
+            {{form.csrf_token}}
           <td scope="row">{{kunde.KundenID}}</td>
               <td>{{kunde.Vorname}}</td>
               <td>{{kunde.Nachname}}</td>

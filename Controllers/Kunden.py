@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request
+from flask import redirect, request
 from flask.templating import render_template
 from flask import Blueprint
 from forms.EditKundenForm import editKundenForm
@@ -21,7 +21,6 @@ def Kunden_requests():
         print(AddKundenFormObject.Wohnohrt.data)
         print(AddKundenFormObject.Fuehrerscheinklasse.data)
 
-        #hier in DB Speichern
         newKunden = Kunden()
         newKunden.KundenID = AddKundenFormObject.data
         newKunden.Vorname = AddKundenFormObject.Vorname.data
@@ -32,12 +31,10 @@ def Kunden_requests():
 
         db.session.add(newKunden)
         db.session.commit()
-
-
+    
     return render_template("Kunden.html", \
-        headline="Automarke", \
         form = AddKundenFormObject, \
-        kunden = kunden)
+            kunden = kunden)
 
 def submitEditForm():
     editKundenFormObject = editKundenForm()

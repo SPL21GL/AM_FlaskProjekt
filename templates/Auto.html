@@ -46,27 +46,27 @@
         </div>
       </nav>
 
-    <form method="post">
-    {{ form.csrf_token() }}
-      <div class="mb-3">
-        <label for="productScale" class="form-label">Jährlicher Umsatz</label>
-        {{form.JaehrlicherUmsatz(class_="form-control")}}
-    </div>
+  <form method="post">
+  {{ form.csrf_token() }}
+  <div class="mb-3">
+    <label for="productScale" class="form-label">Jährlicher Umsatz</label>
+    {{form.JaehrlicherUmsatz(class_="form-control")}}
+  </div>
   
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Marken Name</label>
-      {{form.MarkenName(class_="form-control")}}
+  <div class="mb-3">
+    <label for="productScale" class="form-label">Marken Name</label>
+    {{form.MarkenName(class_="form-control")}}
   </div>
   
   <div class="mb-3">
     <label for="productScale" class="form-label">Verkaufszahlen pro Jahr</label>
     {{form.VerkaufszahlenProJahr(class_="form-control")}}
-</div>
+  </div>
   
-<div class="mb-3">
-  <label for="productScale" class="form-label">Herststellland</label>
-  {{form.Herststellland(class_="form-control")}}
-</div>
+  <div class="mb-3">
+    <label for="productScale" class="form-label">Herststellland</label>
+    {{form.Herststellland(class_="form-control")}}
+  </div>
 
 <button type="submit" class="btn btn-primary">Speichern</button>
 

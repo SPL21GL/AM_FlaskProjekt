@@ -1,4 +1,3 @@
-from flask import Flask, redirect
 from flask.templating import render_template
 from flask import Blueprint
 from models.models import Automarke, db
