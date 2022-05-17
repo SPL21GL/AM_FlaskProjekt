@@ -6,22 +6,22 @@ from forms.addAutoForm import AddAutoForm
 
 Auto_blueprint = Blueprint('auto_blueprint', __name__)
 
-@Auto_blueprint.route("/Auto.html", methods = ["get", "post"])
+
+@Auto_blueprint.route("/Auto.html", methods=["get", "post"])
 def Auto_request():
 
     addAutoFormObject = AddAutoForm()
     auto = db.session.query(Automarke).all()
-    
 
     if addAutoFormObject.validate_on_submit():
-        #post kam zurück und ist valide
+        # post kam zurück und ist valide
         print(addAutoFormObject.JaehrlicherUmsatz.data)
         print(addAutoFormObject.Gruendungsdatum.data)
         print(addAutoFormObject.MarkenName.data)
         print(addAutoFormObject.VerkaufszahlenProJahr.data)
         print(addAutoFormObject.Herststellland.data)
 
-        #hier in DB Speichern
+        # hier in DB Speichern
         newItem = Automarke()
         newItem.JaehrlicherUmsatz = addAutoFormObject.JaehrlicherUmsatz.data
         newItem.Gruendungsdatum = addAutoFormObject.Gruendungsdatum.data
@@ -31,8 +31,8 @@ def Auto_request():
 
         db.session.add(newItem)
         db.session.commit()
-        
-    return render_template("Auto.html", \
-        headline="Automarke", \
-        form = addAutoFormObject, \
-        auto = auto)
+
+    return render_template("Auto.html",
+                           headline="Automarke",
+                           form=addAutoFormObject,
+                           auto=auto)

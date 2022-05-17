@@ -6,7 +6,8 @@ from forms.addAutoForm import AddMietwagen
 
 Miete_blueprint = Blueprint('miete_blueprint', __name__)
 
-@Miete_blueprint.route("/Miete.html", methods = ["get", "post"])
+
+@Miete_blueprint.route("/Miete.html", methods=["get", "post"])
 def Miete_request():
 
     mietwagen = db.session.query(Mietwagen).all()
@@ -30,8 +31,8 @@ def Miete_request():
 
         db.session.add(newMietwagen)
         db.session.commit()
-    
-    return render_template("Miete.html", \
-        headline="Automarke", \
-        form = AddMietwagenFormObject, \
-        mietwagen = mietwagen)
+
+    return render_template("Miete.html",
+                           headline="Automarke",
+                           form=AddMietwagenFormObject,
+                           mietwagen=mietwagen)

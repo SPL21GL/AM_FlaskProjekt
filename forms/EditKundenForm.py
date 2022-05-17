@@ -22,10 +22,12 @@ Führerscheinklasse = (
     ("F", "F"),
 )
 
+
 class editKundenForm(FlaskForm):
     KundenID = HiddenField("KundenID")
     Vorname = StringField("Vorname")
     Nachname = StringField("Nachname")
     Geburtstag = DateField("Geburtstag")
     Wohnohrt = TextAreaField("Wohnort")
-    Fuehrerscheinklasse = SelectField("Fuehrerscheinklasse", choices = Führerscheinklasse, default = 'B1')
+    Fuehrerscheinklasse = SelectField(
+        "Fuehrerscheinklasse", choices=Führerscheinklasse, default='B1')

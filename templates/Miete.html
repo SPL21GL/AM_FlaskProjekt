@@ -16,74 +16,74 @@
 </head>
 <form>
 
-<body>
+  <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">😃</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">😃</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="Kunden.html">📦 Kunden</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Auto.html">💶 Auto</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Kunden.html">📦 Kunden</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Auto.html">💶 Auto</a>
+            </li>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
 
-  <form method="post">
-    {{ form.csrf_token() }}
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Farbe</label>
-      {{form.Farbe(class_="form-control")}}
-  </div>
+    <form method="post">
+      {{ form.csrf_token() }}
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Farbe</label>
+        {{form.Farbe(class_="form-control")}}
+      </div>
 
-  <div class="mb-3">
-    <label for="productScale" class="form-label">km Stand</label>
-    {{form.kmStand(class_="form-control")}}
-</div>
+      <div class="mb-3">
+        <label for="productScale" class="form-label">km Stand</label>
+        {{form.kmStand(class_="form-control")}}
+      </div>
 
-<div class="mb-3">
-  <label for="productScale" class="form-label">Leistung</label>
-  {{form.Leistung(class_="form-control")}}
-</div>
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Leistung</label>
+        {{form.Leistung(class_="form-control")}}
+      </div>
 
-<div class="mb-3">
-  <label for="productScale" class="form-label">Erstzulasung</label>
-  {{form.Erstzulasung(class_="form-control")}}
-</div>
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Erstzulasung</label>
+        {{form.Erstzulasung(class_="form-control")}}
+      </div>
 
-<div class="mb-3">
-  <label for="productScale" class="form-label">Erstzulasung</label>
-  {{form.Erstzulasung(class_="form-control")}}
-</div>
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Erstzulasung</label>
+        {{form.Erstzulasung(class_="form-control")}}
+      </div>
 
-<div class="mb-3">
-  <label for="productScale" class="form-label">Kennzeichen</label>
-  {{form.Kennzeichen(class_="form-control")}}
-</div>  
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Kennzeichen</label>
+        {{form.Kennzeichen(class_="form-control")}}
+      </div>
 
-<div class="mb-3">
-  <label for="productScale" class="form-label">Baujahr</label>
-  {{form.Baujahr(class_="form-control")}}
-</div>  
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Baujahr</label>
+        {{form.Baujahr(class_="form-control")}}
+      </div>
 
-</body>
+  </body>
 </form>
 
 </html>

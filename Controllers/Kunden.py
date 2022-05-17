@@ -8,7 +8,8 @@ from models.models import db, Kunden
 
 Kunden_blueprint = Blueprint('kunden_blueprint', __name__)
 
-@Kunden_blueprint.route("/Kunden.html", methods = ["get", "post"])
+
+@Kunden_blueprint.route("/Kunden.html", methods=["get", "post"])
 def Kunden_requests():
     AddKundenFormObject = AddKundenForm()
     kunden = db.session.query(Kunden).all()
@@ -31,20 +32,19 @@ def Kunden_requests():
 
         db.session.add(newKunden)
         db.session.commit()
-    
-    return render_template("Kunden.html", \
-        form = AddKundenFormObject, \
-            kunden = kunden)
+    return render_template("Kunden.html",
+                           form=AddKundenFormObject,
+                           kunden=kunden)
+
 
 def submitEditForm():
     editKundenFormObject = editKundenForm()
 
     if editKundenFormObject.validate_on_submit():
-        
         KundenID = editKundenFormObject.Kunden.data
-        Kunden_to_edit = db.session.query(Kunden).filter(Kunden.KundenID == KundenID).first()
+        Kunden_to_edit = db.session.query(Kunden).filter(
+            Kunden.KundenID == KundenID).first()
         Kunden_to_edit.Vorname = editKundenFormObject.Vorname.data
-        
         db.session.commit()
 
         return redirect("/")
@@ -52,21 +52,21 @@ def submitEditForm():
     else:
         raise ("Fatal Error")
 
+
 @Kunden_blueprint.route("/editKundenForm.py")
 def showEditForm():
     KundenID = request.args["KundenID"]
     print(KundenID)
-    
-    Kunden_to_edit = db.session.query(Kunden).filter(Kunden.KundenID == KundenID).first()
+
+    Kunden_to_edit = db.session.query(Kunden).filter(
+        Kunden.KundenID == KundenID).first()
     editKundenFormObject = editKundenForm()
 
-    editKundenFormObject.KundenID.data =  Kunden_to_edit.KundenID
+    editKundenFormObject.KundenID.data = Kunden_to_edit.KundenID
     editKundenFormObject.Vorname.data = Kunden_to_edit.Vorname
     editKundenFormObject.Nachname.data = Kunden_to_edit.Nachname
     editKundenFormObject.Geburtstag.data = Kunden_to_edit.Geburtstag
     editKundenFormObject.Wohnohrt.data = Kunden_to_edit.Wohnohrt
-    editKundenFormObject.Fuehrerscheinklasse.data= Kunden_to_edit.Fuehrerscheinklasse
-    
+    editKundenFormObject.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
 
-
-    return render_template("Kunden.html", form = editKundenForm)
+    return render_template("Kunden.html", form=editKundenForm)

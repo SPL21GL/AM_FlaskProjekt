@@ -16,88 +16,88 @@
 </head>
 <form>
 
-<body>
+  <body>
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">😃</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-              </li>
-    
-              <li class="nav-item">
-                <a class="nav-link" href="Kunden.html">📦 Kunden</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Auto.html">💶 Auto</a>
-              </li>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">😃</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="Kunden.html">📦 Kunden</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Auto.html">💶 Auto</a>
+            </li>
           </div>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-  <form method="post">
-  {{ form.csrf_token() }}
-  <div class="mb-3">
-    <label for="productScale" class="form-label">Jährlicher Umsatz</label>
-    {{form.JaehrlicherUmsatz(class_="form-control")}}
-  </div>
-  
-  <div class="mb-3">
-    <label for="productScale" class="form-label">Marken Name</label>
-    {{form.MarkenName(class_="form-control")}}
-  </div>
-  
-  <div class="mb-3">
-    <label for="productScale" class="form-label">Verkaufszahlen pro Jahr</label>
-    {{form.VerkaufszahlenProJahr(class_="form-control")}}
-  </div>
-  
-  <div class="mb-3">
-    <label for="productScale" class="form-label">Herststellland</label>
-    {{form.Herststellland(class_="form-control")}}
-  </div>
+    <form method="post">
+      {{ form.csrf_token() }}
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Jährlicher Umsatz</label>
+        {{form.JaehrlicherUmsatz(class_="form-control")}}
+      </div>
 
-<button type="submit" class="btn btn-primary">Speichern</button>
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Marken Name</label>
+        {{form.MarkenName(class_="form-control")}}
+      </div>
 
-</body>
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Verkaufszahlen pro Jahr</label>
+        {{form.VerkaufszahlenProJahr(class_="form-control")}}
+      </div>
+
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Herststellland</label>
+        {{form.Herststellland(class_="form-control")}}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Speichern</button>
+
+  </body>
 </form>
 
 <table class="table">
   <thead class="table-dark">
-      <tr>
-          <td scope="col">Marken ID</td>
-          <td scope="col">Jährlicher Umsatz</td>
-          <td scope="col">Marken Name</td>
-          <td scope="col">Verkaufszahlen pro Jahr</td>
-          <td scope="col">Herststellland</td>
-      </tr>
+    <tr>
+      <td scope="col">Marken ID</td>
+      <td scope="col">Jährlicher Umsatz</td>
+      <td scope="col">Marken Name</td>
+      <td scope="col">Verkaufszahlen pro Jahr</td>
+      <td scope="col">Herststellland</td>
+    </tr>
   </thead>
   <tbody>
-      {%for auto in autos: %}
-        <div class="container">
-          <form method="get">
-          <td scope="row">{{auto.MarkenID}}</td>
-              <td>{{auto.JaehrlicherUmsatz}}</td>
-              <td>{{auto.Gruendungsdatum}}</td>
-              <td>{{auto.MarkenName}}</td>
-              <td>{{auto.VerkaufszahlenProJahr}}</td>
-              <td>{{auto.Herststellland}}</td>
-        </div>
-        </td>
-        </form>
-      {%endfor%}
-          
+    {%for auto in autos: %}
+    <div class="container">
+      <form method="get">
+        <td scope="row">{{auto.MarkenID}}</td>
+        <td>{{auto.JaehrlicherUmsatz}}</td>
+        <td>{{auto.Gruendungsdatum}}</td>
+        <td>{{auto.MarkenName}}</td>
+        <td>{{auto.VerkaufszahlenProJahr}}</td>
+        <td>{{auto.Herststellland}}</td>
+    </div>
+    </td>
+    </form>
+    {%endfor%}
+
   </tbody>
 </table>
 

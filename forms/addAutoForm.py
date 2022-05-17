@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields.datetime import DateField
 from wtforms.fields.simple import StringField, TextAreaField
 from wtforms.fields import SelectField
-from wtforms import validators
+#from wtforms import validators
 
 YEAR_CHOICES = (
     ("1990", "1990"),
@@ -34,8 +34,8 @@ Führerscheinklasse = (
     ("F", "F"),
 )
 
-#for i in range(1990, 2022):
-   # print(i)
+# for i in range(1990, 2022):
+# print(i)
 
 
 class AddKundenForm(FlaskForm):
@@ -43,17 +43,20 @@ class AddKundenForm(FlaskForm):
     Nachname = StringField("Nachname")
     Geburtstag = DateField("Geburtstag")
     Wohnohrt = TextAreaField("Wohnort")
-    Fuehrerscheinklasse = SelectField("Fuehrerscheinklasse", choices = Führerscheinklasse, default = 'B1')
+    Fuehrerscheinklasse = SelectField(
+        "Fuehrerscheinklasse", choices=Führerscheinklasse, default='B1')
 
 #addKundenFormObject = AddKundenForm()
 
 
 class AddAutoForm(FlaskForm):
     JaehrlicherUmsatz = StringField("JaehrlicherUmsatz")
-    Gruendungsdatum  = SelectField("Gruendungsdatum", choices = YEAR_CHOICES, default = '2022' )
+    Gruendungsdatum = SelectField(
+        "Gruendungsdatum", choices=YEAR_CHOICES, default='2022')
     MarkenName = StringField("MarkenName")
     VerkaufszahlenProJahr = StringField("VerkaufszahlenProJahr")
     Herststellland = StringField("Herststellland")
+
 
 class AddMietwagen(FlaskForm):
     Farbe = SelectField("Farbe")
@@ -61,7 +64,7 @@ class AddMietwagen(FlaskForm):
     Leistung = TextAreaField("Leistung")
     Erstzulasung = DateField("Erstzulassung")
     Kennzeichen = TextAreaField("Kennzeichen")
-    Baujahr = SelectField("Baujahr", choices = YEAR_CHOICES, default = '2022')
+    Baujahr = SelectField("Baujahr", choices=YEAR_CHOICES, default='2022')
 
 #addAutoFormObject = AddAutoForm()
 

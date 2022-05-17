@@ -8,7 +8,7 @@ from models.models import db
 from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
-app.secret_key ="VerySecretSecretKeey"
+app.secret_key = "VerySecretSecretKeey"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@localhost/autoapp"

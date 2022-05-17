@@ -17,96 +17,98 @@
 
 <form>
 
-<body>
+  <body>
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">😃</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">😃</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="Kunden.html">📦 Kunden</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Auto.html">💶 Auto</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Kunden.html">📦 Kunden</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Auto.html">💶 Auto</a>
+            </li>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-  
-  
-  
-  <form method="post">
-    {{ form.csrf_token() }}
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Vorname</label>
-      {{form.Vorname(class_="form-control")}}
-  </div>
-    
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Nachname</label>
-      {{form.Nachname(class_="form-control")}}
-  </div>
-    
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Geburtstag</label>
-      {{form.Geburtstag(class_="form-control")}}
-  </div>
-    
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Wohnohrt</label>
-      {{form.Wohnohrt(class_="form-control")}}
-  </div>
-    
-    <div class="mb-3">
-      <label for="productScale" class="form-label">Fuehrerscheinklasse</label>
-      {{form.Fuehrerscheinklasse(class_="form-control")}}
-  </div>
+    </nav>
 
-  <button type="submit" class="btn btn-primary">Save</button>
-</body>
+
+
+    <form method="post">
+      {{ form.csrf_token() }}
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Vorname</label>
+        {{form.Vorname(class_="form-control")}}
+      </div>
+
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Nachname</label>
+        {{form.Nachname(class_="form-control")}}
+      </div>
+
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Geburtstag</label>
+        {{form.Geburtstag(class_="form-control")}}
+      </div>
+
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Wohnohrt</label>
+        {{form.Wohnohrt(class_="form-control")}}
+      </div>
+
+      <div class="mb-3">
+        <label for="productScale" class="form-label">Fuehrerscheinklasse</label>
+        {{form.Fuehrerscheinklasse(class_="form-control")}}
+      </div>
+
+  </body>
 </form>
 
 <table class="table">
   <thead class="table-dark">
-      <tr>
-          <td scope="col">#</td>
-          <td scope="col">Vorname</td>
-          <td scope="col">Nachname</td>
-          <td scope="col">Geburtstag</td>
-          <td scope="col">Wohnohrt</td>
-          <td scope="col">Führerscheinklasse</td>
-      </tr>
+    <tr>
+      <td scope="col">#</td>
+      <td scope="col">Vorname</td>
+      <td scope="col">Nachname</td>
+      <td scope="col">Geburtstag</td>
+      <td scope="col">Wohnohrt</td>
+      <td scope="col">Führerscheinklasse</td>
+    </tr>
   </thead>
   <tbody>
-      {%for kunde in kunden: %}
-        <div class="container">
-          <form method="post">
-            {{form.csrf_token}}
-          <td scope="row">{{kunde.KundenID}}</td>
-              <td>{{kunde.Vorname}}</td>
-              <td>{{kunde.Nachname}}</td>
-              <td>{{kunde.Geburtstag}}</td>
-              <td>{{kunde.Wohnohrt}}</td>
-              <td>{{kunde.Fuehrerscheinklasse}}</td>
-        </div>
-        </td>
-        </form>
-      {%endfor%}
-          
+    {%for kunde in kunden: %}
+    <div class="container">
+      <form method="post">
+        {{form.csrf_token}}
+        <button type="submit" class="btn btn-primary">Save</button>
+        <td scope="row">{{kunde.KundenID}}</td>
+        <td>{{kunde.Vorname}}</td>
+        <td>{{kunde.Nachname}}</td>
+        <td>{{kunde.Geburtstag}}</td>
+        <td>{{kunde.Wohnohrt}}</td>
+        <td>{{kunde.Fuehrerscheinklasse}}</td>
+
+    </div>
+    </td>
+    </form>
+    {%endfor%}
+
   </tbody>
 </table>
+
 </html>
