@@ -20,7 +20,7 @@
   <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">😃</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -76,6 +76,8 @@
         {{form.Fuehrerscheinklasse(class_="form-control")}}
       </div>
 
+      <button type="submit" class="btn btn-primary">Save</button>
+
   </body>
 </form>
 
@@ -95,14 +97,12 @@
     <div class="container">
       <form method="post">
         {{form.csrf_token}}
-        <button type="submit" class="btn btn-primary">Save</button>
         <td scope="row">{{kunde.KundenID}}</td>
         <td>{{kunde.Vorname}}</td>
         <td>{{kunde.Nachname}}</td>
         <td>{{kunde.Geburtstag}}</td>
         <td>{{kunde.Wohnohrt}}</td>
         <td>{{kunde.Fuehrerscheinklasse}}</td>
-
     </div>
     </td>
     </form>

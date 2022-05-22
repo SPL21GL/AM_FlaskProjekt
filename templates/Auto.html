@@ -19,7 +19,7 @@
   <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">😃</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -68,7 +68,7 @@
         {{form.Herststellland(class_="form-control")}}
       </div>
 
-      <button type="submit" class="btn btn-primary">Speichern</button>
+      <button type="submit" class="btn btn-primary">Save</button>
 
   </body>
 </form>
@@ -84,15 +84,16 @@
     </tr>
   </thead>
   <tbody>
-    {%for auto in autos: %}
+    {%for autos in auto: %}
     <div class="container">
-      <form method="get">
-        <td scope="row">{{auto.MarkenID}}</td>
-        <td>{{auto.JaehrlicherUmsatz}}</td>
-        <td>{{auto.Gruendungsdatum}}</td>
-        <td>{{auto.MarkenName}}</td>
-        <td>{{auto.VerkaufszahlenProJahr}}</td>
-        <td>{{auto.Herststellland}}</td>
+      <form method="post">
+        {{form.csrf_token}}
+        <td scope="row">{{autos.MarkenID}}</td>
+        <td>{{autos.JaehrlicherUmsatz}}</td>
+        <td>{{autos.Gruendungsdatum}}</td>
+        <td>{{autos.MarkenName}}</td>
+        <td>{{autos.VerkaufszahlenProJahr}}</td>
+        <td>{{autos.Herststellland}}</td>
     </div>
     </td>
     </form>

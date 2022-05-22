@@ -18,7 +18,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">😃</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -69,11 +69,6 @@
       </div>
 
       <div class="mb-3">
-        <label for="productScale" class="form-label">Erstzulasung</label>
-        {{form.Erstzulasung(class_="form-control")}}
-      </div>
-
-      <div class="mb-3">
         <label for="productScale" class="form-label">Kennzeichen</label>
         {{form.Kennzeichen(class_="form-control")}}
       </div>
@@ -83,7 +78,42 @@
         {{form.Baujahr(class_="form-control")}}
       </div>
 
+      <button type="submit" class="btn btn-primary">Save</button>
+
   </body>
 </form>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <td scope="col">#</td>
+      <td scope="col">Farbe</td>
+      <td scope="col">km Stand</td>
+      <td scope="col">Leistung</td>
+      <td scope="col">Erstzulasung</td>
+      <td scope="col">Kennzeichen</td>
+      <td scope="col">Baujahr</td>
+    </tr>
+  </thead>
+  <tbody>
+    {%for mieten in mietwagen: %}
+    <div class="container">
+      <form method="post">
+        {{form.csrf_token}}
+        <td scope="row">{{mieten.AutoID}}</td>
+        <td>{{mieten.Farbe}}</td>
+        <td>{{mieten.kmStand}}</td>
+        <td>{{mieten.Leistung}}</td>
+        <td>{{mieten.Erstzulasung}}</td>
+        <td>{{mieten.Kennzeichen}}</td>
+        <td>{{mieten.Baujahr}}</td>
+
+    </div>
+    </td>
+    </form>
+    {%endfor%}
+
+  </tbody>
+</table>
 
 </html>
