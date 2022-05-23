@@ -9,13 +9,12 @@ from models.models import db, Kunden
 Kunden_blueprint = Blueprint('kunden_blueprint', __name__)
 
 
-@Kunden_blueprint.route("/Kunden.html", methods=["get", "post"])
+@Kunden_blueprint.route("/Kunden", methods=["get", "post"])
 def Kunden_requests():
     AddKundenFormObject = AddKundenForm()
     kunden = db.session.query(Kunden).all()
 
     if AddKundenFormObject.validate_on_submit():
-        print(AddKundenFormObject.KundenID.data)
         print(AddKundenFormObject.Vorname.data)
         print(AddKundenFormObject.Nachname.data)
         print(AddKundenFormObject.Geburtstag.data)
@@ -23,7 +22,6 @@ def Kunden_requests():
         print(AddKundenFormObject.Fuehrerscheinklasse.data)
 
         newKunden = Kunden()
-        newKunden.KundenID = AddKundenFormObject.data
         newKunden.Vorname = AddKundenFormObject.Vorname.data
         newKunden.Nachname = AddKundenFormObject.Nachname.data
         newKunden.Geburtstag = AddKundenFormObject.Geburtstag.data
@@ -32,9 +30,12 @@ def Kunden_requests():
 
         db.session.add(newKunden)
         db.session.commit()
+
+        return redirect("/Kunden")
+
     return render_template("Kunden.html",
-                           form=AddKundenFormObject,
-                           kunden=kunden)
+                    form=AddKundenFormObject,
+                    kunden=kunden)
 
 
 def submitEditForm():
