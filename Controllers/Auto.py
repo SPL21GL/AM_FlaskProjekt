@@ -1,8 +1,7 @@
 from flask.templating import render_template
-from flask import Blueprint
-from models.models import Automarke, db
-
+from flask import Blueprint, redirect
 from forms.addAutoForm import AddAutoForm
+from models.models import Automarke, db
 
 Auto_blueprint = Blueprint('auto_blueprint', __name__)
 
@@ -14,7 +13,6 @@ def Auto_request():
     auto = db.session.query(Automarke).all()
 
     if addAutoFormObject.validate_on_submit():
-        # post kam zurück und ist valide
         print(addAutoFormObject.JaehrlicherUmsatz.data)
         print(addAutoFormObject.Gruendungsdatum.data)
         print(addAutoFormObject.MarkenName.data)
@@ -22,17 +20,18 @@ def Auto_request():
         print(addAutoFormObject.Herststellland.data)
 
         # hier in DB Speichern
-        newItem = Automarke()
-        newItem.JaehrlicherUmsatz = addAutoFormObject.JaehrlicherUmsatz.data
-        newItem.Gruendungsdatum = addAutoFormObject.Gruendungsdatum.data
-        newItem.MarkenName = addAutoFormObject.CarMarkenNameName.data
-        newItem.VerkaufszahlenProJahr = addAutoFormObject.VerkaufszahlenProJahr.data
-        newItem.Herststellland = addAutoFormObject.Herststellland.data
+        newAuto = Automarke()
+        newAuto.JaehrlicherUmsatz = addAutoFormObject.JaehrlicherUmsatz.data
+        newAuto.Gruendungsdatum = addAutoFormObject.Gruendungsdatum.data
+        newAuto.MarkenName = addAutoFormObject.CarMarkenNameName.data
+        newAuto.VerkaufszahlenProJahr = addAutoFormObject.VerkaufszahlenProJahr.data
+        newAuto.Herststellland = addAutoFormObject.Herststellland.data
 
-        db.session.add(newItem)
+        db.session.add(newAuto)
         db.session.commit()
 
+        return redirect("/Auto.html")
+
     return render_template("Auto.html",
-                           headline="Automarke",
                            form=addAutoFormObject,
                            auto=auto)

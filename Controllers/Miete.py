@@ -1,8 +1,8 @@
 from flask.templating import render_template
-from flask import Blueprint
+from flask import Blueprint, redirect
 from models.models import Mietwagen, db
 
-from forms.addAutoForm import AddMietwagen
+from forms.addMietenForm import AddMietwagen
 
 Miete_blueprint = Blueprint('miete_blueprint', __name__)
 
@@ -32,7 +32,8 @@ def Miete_request():
         db.session.add(newMietwagen)
         db.session.commit()
 
+        return redirect("/Miete.html")
+
     return render_template("Miete.html",
-                           headline="Automarke",
                            form=AddMietwagenFormObject,
                            mietwagen=mietwagen)

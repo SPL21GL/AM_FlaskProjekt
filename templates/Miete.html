@@ -1,84 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+{%extends 'base.html'%}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <style>
-    body {
-      padding: 10px;
-    }
-  </style>
-</head>
-<form>
+{%block body%}
 
-  <body>
+<h2>Miete</h2>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">😃</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
+<form method="post">
+  {{ form.csrf_token() }}
+  <div class="mb-3">
+    <label for="Farbe" class="form-label">Farbe</label>
+    {{form.Farbe(class_="form-control")}}
+  </div>
 
-            <li class="nav-item">
-              <a class="nav-link" href="Kunden.html">📦 Kunden</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Miete.html">👨‍💼 Mieten</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Auto.html">💶 Auto</a>
-            </li>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <div class="mb-3">
+    <label for="kmStand" class="form-label">km Stand</label>
+    {{form.kmStand(class_="form-control")}}
+  </div>
 
+  <div class="mb-3">
+    <label for="Leistung" class="form-label">Leistung</label>
+    {{form.Leistung(class_="form-control")}}
+  </div>
 
-    <form method="post">
-      {{ form.csrf_token() }}
-      <div class="mb-3">
-        <label for="productScale" class="form-label">Farbe</label>
-        {{form.Farbe(class_="form-control")}}
-      </div>
+  <div class="mb-3">
+    <label for="Erstzulasung" class="form-label">Erstzulasung</label>
+    {{form.Erstzulasung(class_="form-control")}}
+  </div>
 
-      <div class="mb-3">
-        <label for="productScale" class="form-label">km Stand</label>
-        {{form.kmStand(class_="form-control")}}
-      </div>
+  <div class="mb-3">
+    <label for="Kennzeichen" class="form-label">Kennzeichen</label>
+    {{form.Kennzeichen(class_="form-control")}}
+  </div>
 
-      <div class="mb-3">
-        <label for="productScale" class="form-label">Leistung</label>
-        {{form.Leistung(class_="form-control")}}
-      </div>
+  <div class="mb-3">
+    <label for="Baujahr" class="form-label">Baujahr</label>
+    {{form.Baujahr(class_="form-control")}}
+  </div>
 
-      <div class="mb-3">
-        <label for="productScale" class="form-label">Erstzulasung</label>
-        {{form.Erstzulasung(class_="form-control")}}
-      </div>
-
-      <div class="mb-3">
-        <label for="productScale" class="form-label">Kennzeichen</label>
-        {{form.Kennzeichen(class_="form-control")}}
-      </div>
-
-      <div class="mb-3">
-        <label for="productScale" class="form-label">Baujahr</label>
-        {{form.Baujahr(class_="form-control")}}
-      </div>
-
-      <button type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 
   </body>
 </form>
@@ -96,10 +54,8 @@
     </tr>
   </thead>
   <tbody>
-    {%for mieten in mietwagen: %}
-    <div class="container">
-      <form method="post">
-        {{form.csrf_token}}
+    {%for mieten in mietwagen:%}
+      <tr>
         <td scope="row">{{mieten.AutoID}}</td>
         <td>{{mieten.Farbe}}</td>
         <td>{{mieten.kmStand}}</td>
@@ -107,13 +63,11 @@
         <td>{{mieten.Erstzulasung}}</td>
         <td>{{mieten.Kennzeichen}}</td>
         <td>{{mieten.Baujahr}}</td>
-
-    </div>
-    </td>
+      </tr>
     </form>
     {%endfor%}
 
   </tbody>
 </table>
-
 </html>
+{%endblock%}

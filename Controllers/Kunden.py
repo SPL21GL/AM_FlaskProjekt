@@ -2,14 +2,14 @@ from flask import redirect, request
 from flask.templating import render_template
 from flask import Blueprint
 from forms.EditKundenForm import editKundenForm
-from forms.addAutoForm import AddKundenForm
+from forms.addKundenForm import AddKundenForm
 from models.models import db, Kunden
 
 
 Kunden_blueprint = Blueprint('kunden_blueprint', __name__)
 
 
-@Kunden_blueprint.route("/Kunden", methods=["get", "post"])
+@Kunden_blueprint.route("/Kunden.html", methods=["get", "post"])
 def Kunden_requests():
     AddKundenFormObject = AddKundenForm()
     kunden = db.session.query(Kunden).all()
@@ -31,11 +31,11 @@ def Kunden_requests():
         db.session.add(newKunden)
         db.session.commit()
 
-        return redirect("/Kunden")
+        return redirect("/Kunden.html")
 
     return render_template("Kunden.html",
-                    form=AddKundenFormObject,
-                    kunden=kunden)
+                           form=AddKundenFormObject,
+                           kunden=kunden)
 
 
 def submitEditForm():
