@@ -51,6 +51,16 @@
         <td>{{autos.VerkaufszahlenProJahr}}</td>
         <td>{{autos.Herststellland}}</td>
       </tr>
+
+      <td>
+        <form method="post" action="/auto/delete">
+          {{form.csrf_token}}
+          <input type="hidden" id="MarkenID" name="KundenID" value="{{autos.MarkenID}}">
+          <button class="btn btn-light" onclick="deleteItem(this);return false;">❌</button>
+        </form>
+        <button class="btn btn-light" onclick="window.location.href='/editForm?MarkenID={{autos.KundenID}}'">✏️</button>
+      </td>
+    </tr>
     {%endfor%}
 
   </tbody>
