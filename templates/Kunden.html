@@ -47,16 +47,26 @@
     </tr>
   </thead>
   <tbody>
-    {%for kunde in kunden:%}
-      <tr>
-        <td scope="row">{{kunde.KundenID}}</td>
-        <td>{{kunde.Vorname}}</td>
-        <td>{{kunde.Nachname}}</td>
-        <td>{{kunde.Geburtstag}}</td>
-        <td>{{kunde.Wohnohrt}}</td>
-        <td>{{kunde.Fuehrerscheinklasse}}</td>
-      </tr>
-    {%endfor%}
+    {%for kunde in kunden%}
+    <tr>
+      <td scope="row">{{kunde.KundenID}}</td>
+      <td>{{kunde.Vorname}}</td>
+      <td>{{kunde.Nachname}}</td>
+      <td>{{kunde.Geburtstag}}</td>
+      <td>{{kunde.Wohnohrt}}</td>
+      <td>{{kunde.Fuehrerscheinklasse}}</td>
+
+      <td>
+        <form method="post" action="/kunden/delete">
+          {{form.csrf_token}}
+          <input type="hidden" id="KundenID" name="KundenID" value="{{kunden.KundenID}}">
+          <button class="btn btn-danger" onclick="deleteItem(this);return false;">❌</button>
+        </form>
+        <button class="btn btn-info" onclick="window.location.href='/editForm?KundenID={{kunden.KundenID}}'">✏️</button>
+      </td>
+    </tr>
+      {%endfor%}
+
 
   </tbody>
 </table>

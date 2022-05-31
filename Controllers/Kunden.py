@@ -1,6 +1,8 @@
+from curses import flash
 from flask import redirect, request
 from flask.templating import render_template
 from flask import Blueprint
+from DeleteKundenForm import DeleteKundenForm
 from forms.EditKundenForm import editKundenForm
 from forms.addKundenForm import AddKundenForm
 from models.models import db, Kunden
@@ -37,7 +39,23 @@ def Kunden_requests():
                            form=AddKundenFormObject,
                            kunden=kunden)
 
+@Kunden_blueprint.route("/kunden/delete", methods = ["post"])
+def deleteKunde():
+    deleteKundenFormObj = DeleteKundenForm()
+    if deleteKundenFormObj.validate_on_submit():
+        print("gültig")
 
+        KundenIDToDelete = deleteKundenFormObj.itemId.data
+        KundenIDToDelete = db.session.query(Kunden).filter(Kunden.KundenID == KundenIDToDelete)
+        KundenIDToDelete.delete()
+        db.session.commit()
+
+    else:
+        print("Fatal Error")
+    flash(f"Item with id {KundenIDToDelete} has been deleted")
+    return redirect("/") 
+
+"""
 def submitEditForm():
     editKundenFormObject = editKundenForm()
 
@@ -71,3 +89,5 @@ def showEditForm():
     editKundenFormObject.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
 
     return render_template("Kunden.html", form=editKundenForm)
+
+"""
