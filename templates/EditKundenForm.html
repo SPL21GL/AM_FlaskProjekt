@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+
+<form method="post">
+    {{ form.csrf_token() }}
+    <div class="mb-3">
+        <label for="Vorname" class="form-label">Vorname</label>
+        {{form.Vorname(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Nachname" class="form-label">Nachname</label>
+        {{form.Nachname(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Geburtstag" class="form-label">Geburtstag</label>
+        {{form.Geburtstag(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Wohnohrt" class="form-label">Wohnohrt</label>
+        {{form.Wohnohrt(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Fuehrerscheinklasse" class="form-label">Fuehrerscheinklasse</label>
+        {{form.Fuehrerscheinklasse(class_="form-control")}}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+{%endblock body%}

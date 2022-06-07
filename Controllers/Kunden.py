@@ -1,6 +1,7 @@
-from flask import flash, redirect
+from flask import flash, redirect, request
 from flask.templating import render_template
 from flask import Blueprint
+from forms.EditKundenForm import editKundenForm
 from forms.DeleteKundenForm import DeleteKunden
 from forms.addKundenForm import AddKundenForm
 from models.models import db, Kunden
@@ -57,39 +58,35 @@ def loescheKunde():
     return redirect("/Kunden.html")
 
 
-"""
-def submitEditForm():
+@Kunden_blueprint.route("/editForm", methods=["GET", "POST"])
+def products_edit():
     editKundenFormObject = editKundenForm()
-
-    if editKundenFormObject.validate_on_submit():
-        KundenID = editKundenFormObject.Kunden.data
-        Kunden_to_edit = db.session.query(Kunden).filter(
-            Kunden.KundenID == KundenID).first()
-        Kunden_to_edit.Vorname = editKundenFormObject.Vorname.data
-        db.session.commit()
-
-        return redirect("/")
-
-    else:
-        raise ("Fatal Error")
-
-
-@Kunden_blueprint.route("/editKundenForm.py")
-def showEditForm():
-    KundenID = request.args["KundenID"]
-    print(KundenID)
+    kundenID = request.args["KundenID"]
 
     Kunden_to_edit = db.session.query(Kunden).filter(
-        Kunden.KundenID == KundenID).first()
-    editKundenFormObject = editKundenForm()
+                Kunden.KundenID == kundenID).first()
 
-    editKundenFormObject.KundenID.data = Kunden_to_edit.KundenID
-    editKundenFormObject.Vorname.data = Kunden_to_edit.Vorname
-    editKundenFormObject.Nachname.data = Kunden_to_edit.Nachname
-    editKundenFormObject.Geburtstag.data = Kunden_to_edit.Geburtstag
-    editKundenFormObject.Wohnohrt.data = Kunden_to_edit.Wohnohrt
-    editKundenFormObject.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
+    if request.method == "POST":
 
-    return render_template("Kunden.html", form=editKundenForm)
+        if editKundenFormObject.validate_on_submit():
+            kundenID = editKundenFormObject.KundenID.data
+            Kunden_to_edit = db.session.query(Kunden).filter(
+                Kunden.KundenID == kundenID).first()
+            Kunden_to_edit.Vorname = editKundenFormObject.Vorname.data
+            Kunden_to_edit.Nachname = editKundenFormObject.Nachname.data
+            Kunden_to_edit.Geburtstag = editKundenFormObject.Geburtstag.data
+            Kunden_to_edit.Wohnort = editKundenFormObject.Wohnohrt.data
+            Kunden_to_edit.Fuehrerscheinklasse = editKundenFormObject.Fuehrerscheinklasse.data
 
-"""
+            db.session.commit()
+
+            return redirect("/Kunden.html")
+
+    else:
+        Kunden_to_edit.Vorname.data = Kunden_to_edit.Vorname
+        Kunden_to_edit.Nachname.data = Kunden_to_edit.Nachname
+        Kunden_to_edit.Geburtstag.data = Kunden_to_edit.Geburtstag
+        Kunden_to_edit.Wohnort.data = Kunden_to_edit.Wohnort
+        Kunden_to_edit.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
+
+        return render_template("EditKundenForm.html", form=Kunden_to_edit)
