@@ -59,19 +59,18 @@ def loescheKunde():
 
 
 @Kunden_blueprint.route("/editForm", methods=["GET", "POST"])
-def products_edit():
+def Kunden_edit():
     editKundenFormObject = editKundenForm()
-    kundenID = request.args["KundenID"]
 
     Kunden_to_edit = db.session.query(Kunden).filter(
-                Kunden.KundenID == kundenID).first()
+        Kunden.KundenID == editKundenFormObject.KundenID.data).first()
 
     if request.method == "POST":
-
         if editKundenFormObject.validate_on_submit():
-            kundenID = editKundenFormObject.KundenID.data
+
             Kunden_to_edit = db.session.query(Kunden).filter(
-                Kunden.KundenID == kundenID).first()
+                Kunden.KundenID == editKundenFormObject.KundenID.data).first()
+
             Kunden_to_edit.Vorname = editKundenFormObject.Vorname.data
             Kunden_to_edit.Nachname = editKundenFormObject.Nachname.data
             Kunden_to_edit.Geburtstag = editKundenFormObject.Geburtstag.data
@@ -83,10 +82,18 @@ def products_edit():
             return redirect("/Kunden.html")
 
     else:
-        Kunden_to_edit.Vorname.data = Kunden_to_edit.Vorname
-        Kunden_to_edit.Nachname.data = Kunden_to_edit.Nachname
-        Kunden_to_edit.Geburtstag.data = Kunden_to_edit.Geburtstag
-        Kunden_to_edit.Wohnort.data = Kunden_to_edit.Wohnort
-        Kunden_to_edit.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
+        kundenID = request.args["KundenID"]
 
-        return render_template("EditKundenForm.html", form=Kunden_to_edit)
+        Kunden_to_edit = db.session.query(Kunden).filter(
+            Kunden.KundenID == kundenID).first()
+
+        editKundenFormObject.KundenID.data = Kunden_to_edit.KundenID
+        editKundenFormObject.Vorname.data = Kunden_to_edit.Vorname
+        editKundenFormObject.Nachname.data = Kunden_to_edit.Nachname
+        editKundenFormObject.Geburtstag.data = Kunden_to_edit.Geburtstag
+        editKundenFormObject.Wohnohrt.data = Kunden_to_edit.Wohnort
+        editKundenFormObject.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
+
+        return render_template("EditKundenForm.html", form=editKundenFormObject)
+
+    return render_template("EditKundenForm.html", form=editKundenFormObject)
