@@ -2,18 +2,19 @@
 
 {%block body%}
 
+<h2>Kunden</h2>
 
-<form method="post">
+
+<form method="post" , class="row g-2">
     {{ form.csrf_token() }}
-    {{form.KundenID() }}
+    {{ form.KundenID() }}
 
-
-    <div class="mb-3">
+    <div class="col-md-6">
         <label for="Vorname" class="form-label">Vorname</label>
         {{form.Vorname(class_="form-control")}}
     </div>
 
-    <div class="mb-3">
+    <div class="col-md-6">
         <label for="Nachname" class="form-label">Nachname</label>
         {{form.Nachname(class_="form-control")}}
     </div>
@@ -23,18 +24,22 @@
         {{form.Geburtstag(class_="form-control")}}
     </div>
 
-    <div class="mb-3">
-        <label for="Wohnohrt" class="form-label">Wohnohrt</label>
-        {{form.Wohnohrt(class_="form-control")}}
+    <div class="col-md-6">
+        <label for="Wohnort" class="form-label">Wohnort</label>
+        {{form.Wohnort(class_="form-control")}}
     </div>
 
-    <div class="mb-3">
+    <div class="col-md-6">
         <label for="Fuehrerscheinklasse" class="form-label">Fuehrerscheinklasse</label>
         {{form.Fuehrerscheinklasse(class_="form-control")}}
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <br>
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+        </br>
+    </div>
 </form>
 
 {%endblock body%}

@@ -4,24 +4,26 @@
 
 <h2>Automarke</h2>
 
-<form method="post">
+<form method="post" , class="row g-2">
     {{ form.csrf_token() }}
-    {{form.MarkenID()}}
-
-    <div class="mb-3">
-        <label for="JaehrlicherUmsatz" class="form-label">Jährlicher Umsatz</label>
-        {{form.JaehrlicherUmsatz(class_="form-control")}}
-    </div>
-
-    <div class="mb-3">
-        <label for="Gruendungsjahr" class="form-label">Gründungsjahr</label>
-        {{form.Gruendungsjahr(class_="form-control")}}
-    </div>
+    {{ form.MarkenID() }}
 
     <div class="mb-3">
         <label for="MarkenName" class="form-label">Marken Name</label>
         {{form.MarkenName(class_="form-control")}}
     </div>
+
+    <div class="col-md-6">
+        <label for="Gruendungsjahr" class="form-label">Gründungsjahr</label>
+        {{form.Gruendungsjahr(class_="form-control")}}
+    </div>
+
+    <div class="col-md-6">
+        <label for="JaehrlicherUmsatz" class="form-label">Jährlicher Umsatz</label>
+        {{form.JaehrlicherUmsatz(class_="form-control")}}
+    </div>
+
+
 
     <div class="mb-3">
         <label for="VerkaufszahlenProJahr" class="form-label">Verkaufszahlen pro Jahr</label>
@@ -29,12 +31,16 @@
     </div>
 
     <div class="mb-3">
-        <label for="Herststellland" class="form-label">Herststellland</label>
+        <label for="Herststellland" class="form-label">Herstellland</label>
         {{form.Herststellland(class_="form-control")}}
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <br>
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+        </br>
+    </div>
 </form>
 
 {%endblock body%}

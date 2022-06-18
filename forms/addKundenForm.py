@@ -25,8 +25,8 @@ FÜHRERSCHEINKLASSE = (
 
 
 class AddKundenForm(FlaskForm):
-    Vorname = StringField("Vorname", validators = [validators.InputRequired()])
-    Nachname = StringField("Nachname", validators = [validators.InputRequired()])
+    Vorname = StringField("Vorname", validators=[validators.InputRequired()])
+    Nachname = StringField("Nachname", validators=[validators.InputRequired()])
     Geburtstag = DateField("Geburtstag")
     Wohnort = StringField("Wohnort")
     Fuehrerscheinklasse = SelectField(

@@ -72,9 +72,8 @@ def Mietwagen_edit():
 
             Mietwagen_to_edit = db.session.query(Mietwagen).filter(
                 Mietwagen.AutoID == editMietwagenFormObject.AutoID.data).first()
-            
+
             print(Mietwagen_to_edit)
-            
 
             Mietwagen_to_edit.Farbe = editMietwagenFormObject.Farbe.data
             Mietwagen_to_edit.kmStand = editMietwagenFormObject.kmStand.data

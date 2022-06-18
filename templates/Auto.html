@@ -4,7 +4,7 @@
 
 <h2>Automarke</h2>
 
-<form method="post", class="row g-2">
+<form method="post" , class="row g-2">
   {{ form.csrf_token() }}
   <div class="mb-3">
     <label for="MarkenName" class="form-label">Marken Name</label>
@@ -47,9 +47,9 @@
   <thead class="table-dark">
     <tr>
       <td scope="col">#</td>
-      <td scope="col">Jährlicher Umsatz</td>
-      <td scope="col">Gründungsjahr</td>
       <td scope="col">Marken Name</td>
+      <td scope="col">Gründungsjahr</td>
+      <td scope="col">Jährlicher Umsatz</td>
       <td scope="col">Verkaufszahlen pro Jahr</td>
       <td scope="col">Herstellland</td>
       <td scope="col">🗑️</td>
@@ -60,9 +60,9 @@
     {%for autos in auto%}
     <tr>
       <td scope="row">{{autos.MarkenID}}</td>
-      <td>{{autos.JaehrlicherUmsatz}}</td>
-      <td>{{autos.Gruendungsjahr}}</td>
       <td>{{autos.MarkenName}}</td>
+      <td>{{autos.Gruendungsjahr}}</td>
+      <td>{{autos.JaehrlicherUmsatz}}</td>
       <td>{{autos.VerkaufszahlenProJahr}}</td>
       <td>{{autos.Herststellland}}</td>
       <td>

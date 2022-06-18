@@ -6,13 +6,10 @@
 
 <form method="post" class="row g-2">
   {{ form.csrf_token() }}
-  <div class="input-group mb-3">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-      aria-expanded="false">Farben</button>
-    <ul class="dropdown-menu">
-      {{form.Farbe(class_="form-control")}}
-    </ul>
-    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="sonstiges...">
+
+  <div class="mb-3">
+    <label for="Farbe" class="form-label">Farbe</label>
+    {{form.Farbe(class_="form-control")}}
   </div>
 
   <div class="col-md-6">
