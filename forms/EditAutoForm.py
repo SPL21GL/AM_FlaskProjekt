@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.fields.simple import StringField
-from wtforms.fields import SelectField
-from wtforms import validators
+from wtforms.fields import SelectField, HiddenField
 from wtforms.fields import DecimalField
 
 Gruendungsdatum_CHOICES = (
@@ -16,10 +15,11 @@ Gruendungsdatum_CHOICES = (
 )
 
 
-class AddAutoForm(FlaskForm):
-    JaehrlicherUmsatz = DecimalField("JaehrlicherUmsatz", validators = [validators.InputRequired()])
+class editAutoForm(FlaskForm):
+    MarkenID = HiddenField("MarkenID")
+    JaehrlicherUmsatz = DecimalField("JaehrlicherUmsatz")
     Gruendungsjahr = SelectField(
         "Gruendungsjahr", choices=Gruendungsdatum_CHOICES, default='2022')
     MarkenName = StringField("MarkenName")
-    VerkaufszahlenProJahr = DecimalField("VerkaufszahlenProJahr", validators = [validators.InputRequired()])
-    Herststellland = StringField("Herststellland", validators = [validators.InputRequired()])
+    VerkaufszahlenProJahr = DecimalField("VerkaufszahlenProJahr")
+    Herststellland = StringField("Herststellland")

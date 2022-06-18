@@ -11,7 +11,7 @@ class Automarke(db.Model):
 
     MarkenID = db.Column(db.Integer, primary_key=True, unique=True)
     JaehrlicherUmsatz = db.Column(db.Numeric(10, 0))
-    Gruendungsdatum = db.Column(db.Date)
+    Gruendungsjahr = db.Column(db.String(128), nullable=False)
     MarkenName = db.Column(db.String(128))
     VerkaufszahlenProJahr = db.Column(db.Numeric(10, 0), nullable=False)
     Herststellland = db.Column(db.String(128))

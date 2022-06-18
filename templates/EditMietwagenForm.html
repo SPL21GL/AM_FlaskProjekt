@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>Mietwagen</h2>
+
+<form method="post">
+  {{ form.csrf_token() }}
+  {{form.AutoID() }}
+
+  <div class="mb-3">
+    <label for="Farbe" class="form-label">Farbe</label>
+    {{form.Farbe(class_="form-control")}}
+  </div>
+
+  <div class="mb-3">
+    <label for="kmStand" class="form-label">km Stand</label>
+    {{form.kmStand(class_="form-control")}}
+  </div>
+
+  <div class="mb-3">
+    <label for="Leistung" class="form-label">Leistung</label>
+    {{form.Leistung(class_="form-control")}}
+  </div>
+
+  <div class="mb-3">
+    <label for="Erstzulasung" class="form-label">Erstzulasung</label>
+    {{form.Erstzulasung(class_="form-control")}}
+  </div>
+
+  <div class="mb-3">
+    <label for="Kennzeichen" class="form-label">Kennzeichen</label>
+    {{form.Kennzeichen(class_="form-control")}}
+  </div>
+
+  <div class="mb-3">
+    <label for="Baujahr" class="form-label">Baujahr</label>
+    {{form.Baujahr(class_="form-control")}}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+  </body>
+</form>
+
+{%endblock body%}

@@ -3,4 +3,4 @@ from wtforms.fields.simple import HiddenField
 
 
 class DeleteAuto(FlaskForm):
-    KundenID = HiddenField("KundenID")
+    MarkenID = HiddenField("MarkenID")

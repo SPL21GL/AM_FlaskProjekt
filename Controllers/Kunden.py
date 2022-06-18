@@ -19,14 +19,14 @@ def Kunden_requests():
         print(AddKundenFormObject.Vorname.data)
         print(AddKundenFormObject.Nachname.data)
         print(AddKundenFormObject.Geburtstag.data)
-        print(AddKundenFormObject.Wohnohrt.data)
+        print(AddKundenFormObject.Wohnort.data)
         print(AddKundenFormObject.Fuehrerscheinklasse.data)
 
         newKunden = Kunden()
         newKunden.Vorname = AddKundenFormObject.Vorname.data
         newKunden.Nachname = AddKundenFormObject.Nachname.data
         newKunden.Geburtstag = AddKundenFormObject.Geburtstag.data
-        newKunden.Wohnohrt = AddKundenFormObject.Wohnohrt.data
+        newKunden.Wohnort = AddKundenFormObject.Wohnort.data
         newKunden.Fuehrerscheinklasse = AddKundenFormObject.Fuehrerscheinklasse.data
 
         db.session.add(newKunden)
@@ -74,7 +74,7 @@ def Kunden_edit():
             Kunden_to_edit.Vorname = editKundenFormObject.Vorname.data
             Kunden_to_edit.Nachname = editKundenFormObject.Nachname.data
             Kunden_to_edit.Geburtstag = editKundenFormObject.Geburtstag.data
-            Kunden_to_edit.Wohnort = editKundenFormObject.Wohnohrt.data
+            Kunden_to_edit.Wohnort = editKundenFormObject.Wohnort.data
             Kunden_to_edit.Fuehrerscheinklasse = editKundenFormObject.Fuehrerscheinklasse.data
 
             db.session.commit()
@@ -91,7 +91,7 @@ def Kunden_edit():
         editKundenFormObject.Vorname.data = Kunden_to_edit.Vorname
         editKundenFormObject.Nachname.data = Kunden_to_edit.Nachname
         editKundenFormObject.Geburtstag.data = Kunden_to_edit.Geburtstag
-        editKundenFormObject.Wohnohrt.data = Kunden_to_edit.Wohnort
+        editKundenFormObject.Wohnort.data = Kunden_to_edit.Wohnort
         editKundenFormObject.Fuehrerscheinklasse.data = Kunden_to_edit.Fuehrerscheinklasse
 
         return render_template("EditKundenForm.html", form=editKundenFormObject)

@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>Automarke</h2>
+
+<form method="post">
+    {{ form.csrf_token() }}
+    {{form.MarkenID()}}
+
+    <div class="mb-3">
+        <label for="JaehrlicherUmsatz" class="form-label">Jährlicher Umsatz</label>
+        {{form.JaehrlicherUmsatz(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Gruendungsjahr" class="form-label">Gründungsjahr</label>
+        {{form.Gruendungsjahr(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="MarkenName" class="form-label">Marken Name</label>
+        {{form.MarkenName(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="VerkaufszahlenProJahr" class="form-label">Verkaufszahlen pro Jahr</label>
+        {{form.VerkaufszahlenProJahr(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Herststellland" class="form-label">Herststellland</label>
+        {{form.Herststellland(class_="form-control")}}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+{%endblock body%}

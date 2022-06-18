@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms.fields.datetime import DateField
-from wtforms.fields.simple import StringField, TextAreaField
+from wtforms.fields.simple import StringField
 from wtforms.fields import SelectField
+from wtforms import validators
 
-Führerscheinklasse = (
+FÜHRERSCHEINKLASSE = (
     ("AM", "AM"),
     ("A1", "A1"),
     ("A2", "A2"),
@@ -24,9 +25,9 @@ Führerscheinklasse = (
 
 
 class AddKundenForm(FlaskForm):
-    Vorname = StringField("Vorname")
-    Nachname = StringField("Nachname")
+    Vorname = StringField("Vorname", validators = [validators.InputRequired()])
+    Nachname = StringField("Nachname", validators = [validators.InputRequired()])
     Geburtstag = DateField("Geburtstag")
-    Wohnohrt = TextAreaField("Wohnort")
+    Wohnort = StringField("Wohnort")
     Fuehrerscheinklasse = SelectField(
-        "Fuehrerscheinklasse", choices=Führerscheinklasse, default='B1')
+        "Fuehrerscheinklasse", choices=FÜHRERSCHEINKLASSE, default='B1')

@@ -4,17 +4,24 @@
 
 <h2>Automarke</h2>
 
-<form method="post">
+<form method="post", class="row g-2">
   {{ form.csrf_token() }}
-  <div class="mb-3">
-    <label for="JaehrlicherUmsatz" class="form-label">Jährlicher Umsatz</label>
-    {{form.JaehrlicherUmsatz(class_="form-control")}}
-  </div>
-
   <div class="mb-3">
     <label for="MarkenName" class="form-label">Marken Name</label>
     {{form.MarkenName(class_="form-control")}}
   </div>
+
+  <div class="col-md-6">
+    <label for="Gruendungsjahr" class="form-label">Gründungsjahr</label>
+    {{form.Gruendungsjahr(class_="form-control")}}
+  </div>
+
+  <div class="col-md-6">
+    <label for="JaehrlicherUmsatz" class="form-label">Jährlicher Umsatz</label>
+    {{form.JaehrlicherUmsatz(class_="form-control")}}
+  </div>
+
+
 
   <div class="mb-3">
     <label for="VerkaufszahlenProJahr" class="form-label">Verkaufszahlen pro Jahr</label>
@@ -22,13 +29,18 @@
   </div>
 
   <div class="mb-3">
-    <label for="Herststellland" class="form-label">Herststellland</label>
+    <label for="Herststellland" class="form-label">Herstellland</label>
     {{form.Herststellland(class_="form-control")}}
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <br>
+    <button type="submit" class="btn btn-outline-secondary">Submit</button>
+    <button type="reset" class="btn btn-outline-secondary">Reset</button>
+    </br>
+  </div>
 
-  </body>
+
 </form>
 
 <table class="table">
@@ -36,35 +48,37 @@
     <tr>
       <td scope="col">#</td>
       <td scope="col">Jährlicher Umsatz</td>
+      <td scope="col">Gründungsjahr</td>
       <td scope="col">Marken Name</td>
       <td scope="col">Verkaufszahlen pro Jahr</td>
-      <td scope="col">Herststellland</td>
+      <td scope="col">Herstellland</td>
+      <td scope="col">🗑️</td>
+      <td scope="col">📝</td>
     </tr>
   </thead>
   <tbody>
-    {%for autos in auto:%}
-      <tr>
-        <td scope="row">{{autos.MarkenID}}</td>
-        <td>{{autos.JaehrlicherUmsatz}}</td>
-        <td>{{autos.Gruendungsdatum}}</td>
-        <td>{{autos.MarkenName}}</td>
-        <td>{{autos.VerkaufszahlenProJahr}}</td>
-        <td>{{autos.Herststellland}}</td>
-      </tr>
-
+    {%for autos in auto%}
+    <tr>
+      <td scope="row">{{autos.MarkenID}}</td>
+      <td>{{autos.JaehrlicherUmsatz}}</td>
+      <td>{{autos.Gruendungsjahr}}</td>
+      <td>{{autos.MarkenName}}</td>
+      <td>{{autos.VerkaufszahlenProJahr}}</td>
+      <td>{{autos.Herststellland}}</td>
       <td>
         <form method="post" action="/auto/delete">
           {{form.csrf_token}}
-          <input type="hidden" id="MarkenID" name="KundenID" value="{{autos.MarkenID}}">
-          <button class="btn btn-light" onclick="deleteItem(this);return false;">❌</button>
+          <input type="hidden" id="MarkenID" name="MarkenID" value="{{autos.MarkenID}}">
+          <button class="btn btn-outline-danger" onclick="deleteItem(this);return false;">❌</button>
         </form>
-        <button class="btn btn-light" onclick="window.location.href='/editForm?MarkenID={{autos.KundenID}}'">✏️</button>
+      </td>
+      <td>
+        <button class="btn btn-outline-info"
+          onclick="window.location.href='/editFormAuto?MarkenID={{autos.MarkenID}}'">🖋️</button>
       </td>
     </tr>
     {%endfor%}
 
   </tbody>
 </table>
-
-</html>
 {%endblock%}

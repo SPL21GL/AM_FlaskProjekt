@@ -3,7 +3,7 @@ from wtforms.fields.datetime import DateField
 from wtforms.fields import SelectField
 from wtforms.fields.simple import StringField, TextAreaField, HiddenField
 
-Führerscheinklasse = (
+FÜHRERSCHEINKLASSE = (
     ("AM", "AM"),
     ("A1", "A1"),
     ("A2", "A2"),
@@ -28,6 +28,6 @@ class editKundenForm(FlaskForm):
     Vorname = StringField("Vorname")
     Nachname = StringField("Nachname")
     Geburtstag = DateField("Geburtstag")
-    Wohnohrt = TextAreaField("Wohnort")
+    Wohnort = TextAreaField("Wohnort")
     Fuehrerscheinklasse = SelectField(
-        "Fuehrerscheinklasse", choices=Führerscheinklasse, default='B1')
+        "Fuehrerscheinklasse", choices=FÜHRERSCHEINKLASSE, default='B1')

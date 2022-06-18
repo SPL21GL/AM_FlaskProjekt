@@ -4,19 +4,23 @@
 
 <h2>Mietwagen</h2>
 
-<form method="post">
+<form method="post" class="row g-2">
   {{ form.csrf_token() }}
-  <div class="mb-3">
-    <label for="Farbe" class="form-label">Farbe</label>
-    {{form.Farbe(class_="form-control")}}
+  <div class="input-group mb-3">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+      aria-expanded="false">Farben</button>
+    <ul class="dropdown-menu">
+      {{form.Farbe(class_="form-control")}}
+    </ul>
+    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="sonstiges...">
   </div>
 
-  <div class="mb-3">
+  <div class="col-md-6">
     <label for="kmStand" class="form-label">km Stand</label>
     {{form.kmStand(class_="form-control")}}
   </div>
 
-  <div class="mb-3">
+  <div class="col-md-6">
     <label for="Leistung" class="form-label">Leistung</label>
     {{form.Leistung(class_="form-control")}}
   </div>
@@ -26,17 +30,22 @@
     {{form.Erstzulasung(class_="form-control")}}
   </div>
 
-  <div class="mb-3">
+  <div class="col-md-6">
     <label for="Kennzeichen" class="form-label">Kennzeichen</label>
     {{form.Kennzeichen(class_="form-control")}}
   </div>
 
-  <div class="mb-3">
+  <div class="col-md-6">
     <label for="Baujahr" class="form-label">Baujahr</label>
     {{form.Baujahr(class_="form-control")}}
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <br>
+    <button type="submit" class="btn btn-outline-secondary">Submit</button>
+    <button type="reset" class="btn btn-outline-secondary">Reset</button>
+    </br>
+  </div>
 
   </body>
 </form>
@@ -51,23 +60,34 @@
       <td scope="col">Erstzulasung</td>
       <td scope="col">Kennzeichen</td>
       <td scope="col">Baujahr</td>
+      <td scope="col">🗑️</td>
+      <td scope="col">📝</td>
     </tr>
   </thead>
   <tbody>
-    {%for mieten in mietwagen:%}
-      <tr>
-        <td scope="row">{{mieten.AutoID}}</td>
-        <td>{{mieten.Farbe}}</td>
-        <td>{{mieten.kmStand}}</td>
-        <td>{{mieten.Leistung}}</td>
-        <td>{{mieten.Erstzulasung}}</td>
-        <td>{{mieten.Kennzeichen}}</td>
-        <td>{{mieten.Baujahr}}</td>
-      </tr>
-    </form>
+    {%for mieten in mietwagen%}
+    <tr>
+      <td scope="row">{{mieten.AutoID}}</td>
+      <td>{{mieten.Farbe}}</td>
+      <td>{{mieten.kmStand}}</td>
+      <td>{{mieten.Leistung}}</td>
+      <td>{{mieten.Erstzulasung}}</td>
+      <td>{{mieten.Kennzeichen}}</td>
+      <td>{{mieten.Baujahr}}</td>
+      <td>
+        <form method="post" action="/Mietwagen/delete">
+          {{form.csrf_token}}
+          <input type="hidden" id="AutoID" name="AutoID" value="{{mieten.AutoID}}">
+          <button class="btn btn-outline-danger" onclick="deleteItem(this);return false;">❌</button>
+        </form>
+      </td>
+      <td>
+        <button class="btn btn-outline-info"
+          onclick="window.location.href='/editFormMiete?AutoID={{mieten.AutoID}}'">🖋️</button>
+      </td>
+    </tr>
     {%endfor%}
 
   </tbody>
 </table>
-</html>
 {%endblock%}
